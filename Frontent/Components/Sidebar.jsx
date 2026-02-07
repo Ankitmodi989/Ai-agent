@@ -31,7 +31,7 @@ const Sidebar = () => {
     const handleLogout = async()=>{
 
       try{
-          const {data} = await axios.get("http://localhost:3000/api/v1/user/logout",{
+          const {data} = await axios.get("https://ai-agent-fr1z.onrender.com/api/v1/user/logout",{
            withCredentials:true
         })
 

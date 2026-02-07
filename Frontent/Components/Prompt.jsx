@@ -21,7 +21,7 @@ const Prompt = () => {
 
         try{
             const token = localStorage.getItem("token")
-            const response = await axios.post("http://localhost:3000/api/v1/user/promt",{
+            const response = await axios.post("https://ai-agent-fr1z.onrender.com/api/v1/user/promt",{
                 content:trimmedvalue
             },
             {

@@ -36,7 +36,7 @@ const Login = () => {
         setError("")
         
         try{
-            const {data}=await axios.post("http://localhost:3000/api/v1/user/login",
+            const {data}=await axios.post("https://ai-agent-fr1z.onrender.com/api/v1/user/login",
             {
                 email:formData.email,
                 password:formData.password,
