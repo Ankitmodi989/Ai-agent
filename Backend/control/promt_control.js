@@ -2,9 +2,7 @@ import { GoogleGenAI } from "@google/genai";
 import { Promt } from "../model/promt.js";
 
 
-const ai = new GoogleGenAI({
-  apiKey: "AIzaSyBjsGRutkUtBkELPS_vBAgaRe1Zo9x4YWY"
-});
+
 export const Sendpromt = async(req,res)=>{
     const {content} = req.body
     const userId = req.userId
@@ -20,6 +18,10 @@ export const Sendpromt = async(req,res)=>{
             role : "user",
             content,
         })
+
+        const ai = new GoogleGenAI({
+          apiKey: process.env.GEMINI_API_KEY
+        });
 
         // send to google gemini
         const response = await ai.models.generateContent({

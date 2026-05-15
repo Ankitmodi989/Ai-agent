@@ -11,7 +11,7 @@ function userMiddleware(req,res,next){
     const token = authHeader.split(" ")[1];
 
     try{
-        const decoded =  jwt.verify(token,config.jwt_password);
+        const decoded =  jwt.verify(token, process.env.JWT_PASSWORD);
         console.log(decoded)
         req.userId = decoded.id;
 

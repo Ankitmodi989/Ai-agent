@@ -6,7 +6,13 @@ import promtrouter from './Route/promt_route.js'
 import cookieParser  from 'cookie-parser';
 import cors from 'cors'
 
-dotenv.config();
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+dotenv.config({ path: path.resolve(__dirname, '.env') });
 const app = express();
 const port  = process.env.PORT || 4001;
 const uri = process.env.MONGO_URI ;
@@ -17,7 +23,7 @@ mongoose.connect(uri).then(()=>console.log("Connected to Mongodb")).catch((error
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
-    origin:process.env.FRONTEND_URL,
+    origin: ["http://localhost:1234", process.env.FRONTEND_URL],
     credentials:true,
     methods:["GET","POST","PUT","DELETE"],
     allowedHeaders:["Content-Type","Authorization"],

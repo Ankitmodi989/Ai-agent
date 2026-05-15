@@ -27,7 +27,7 @@ export const  signup =async(req,res)=>{
 
     }catch(error){
         console.error("Signup error:  ",error);
-        return res.status(500).json({message:"Internal server error during signup"});
+        return res.status(500).json({message:"Internal server error during signup", error: error.message, stack: error.stack});
     }
 };
 export const  login =async(req,res)=>{
@@ -40,7 +40,7 @@ export const  login =async(req,res)=>{
          if(!isPasscorrect)
             return res.status(201).json({errors:"Invalid Credential"});
 
-         const token = jwt.sign({id:user._id},config.jwt_password,{
+         const token = jwt.sign({id:user._id}, process.env.JWT_PASSWORD, {
             expiresIn:"1d"
          })
          const cookieOptions ={

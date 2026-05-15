@@ -29,7 +29,7 @@ const Signup = () => {
         setLoading(true)
         setError("")
         try{
-            const {data}=await axios.post("https://ai-agent-fr1z.onrender.com/api/v1/user/signup",
+            const {data}=await axios.post("http://localhost:3000/api/v1/user/signup",
                 {
                 firstName : formData.firstName,
                 lastName:formData.lastName,
@@ -43,7 +43,7 @@ const Signup = () => {
             navigate("/login")
         }
         catch(error){
-          const message =   error?.response?.data?.errors || "Signup failed"
+          const message = error?.response?.data?.error || error?.response?.data?.message || error?.response?.data?.errors || "Signup failed"
           setError(message);
         }
         finally{

@@ -16,8 +16,7 @@ const user = new mongoose.Schema({
     },
     password :{
         type: String,
-        required: true,
-        unique:true
+        required: true
     }
 })
 export const User  = mongoose.model("deepseeks",user);

@@ -3,6 +3,7 @@ import { LogOut, X } from 'lucide-react'
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router';
 import { useAuth } from './AuthProvider';
+import Cookies from 'js-cookie';
 
 
 
@@ -31,19 +32,20 @@ const Sidebar = () => {
     const handleLogout = async()=>{
 
       try{
-          const {data} = await axios.get("https://ai-agent-fr1z.onrender.com/api/v1/user/logout",{
+          const {data} = await axios.get("http://localhost:3000/api/v1/user/logout",{
            withCredentials:true
         })
-
+      }
+      catch(error){
+        console.error("Logout API Failed:", error);
+      } finally {
+        Cookies.remove("jwt");
         localStorage.removeItem("user")
         localStorage.removeItem("token")
         
-         setAuthUser(null)
-          setUser(null);
-         navigate("/login")
-      }
-      catch(error){
-        alert(error?.response?.data?.errors || "Logout Failed")
+        setAuthUser(null)
+        setUser(null);
+        navigate("/login")
       }
     }
   return (
