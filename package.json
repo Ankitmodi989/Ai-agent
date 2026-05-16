@@ -2,7 +2,7 @@
     "type": "module",
     "scripts": {
         "start": "node Backend/index.js",
-        "build": "parcel index.html"
+        "build": "parcel build index.html"
     },
     "dependencies": {
         "@google/genai": "^1.35.0",
