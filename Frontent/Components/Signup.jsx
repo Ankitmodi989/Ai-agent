@@ -29,7 +29,7 @@ const Signup = () => {
         setLoading(true)
         setError("")
         try{
-            const {data}=await axios.post("http://localhost:3000/api/v1/user/signup",
+            const {data}=await axios.post("https://ai-agent-fr1z.onrender.com/api/v1/user/signup",
                 {
                 firstName : formData.firstName,
                 lastName:formData.lastName,

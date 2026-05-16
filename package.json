@@ -1,8 +1,8 @@
 {
     "type": "module",
     "scripts": {
-        "start": "nodemon Backend/index.js",
-        "build": "parcel build index.html"
+        "start": "node Backend/index.js",
+        "build": "parcel index.html"
     },
     "dependencies": {
         "@google/genai": "^1.35.0",
